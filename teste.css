@@ -1,0 +1,231 @@
+nav {
+  background-color: lightblue;
+  padding: 10px;
+}
+
+.navbar{
+  list-style: none;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li a{
+  text-decoration: none;
+  color: navy;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+li button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+li button:hover {
+  background-color: darkorange;
+}
+
+#formInscription {
+  max-width:400px;
+  margin: 40px;
+  padding:20px;
+  background-color: #f9f9f9;
+  border-radius: 9px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-family: arial,sans-serif;
+  width: 50%;
+  margin: 0 auto;
+  display: none;
+  margin-top: 15px;
+}
+
+label{
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  margin: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button[type="submit"]:hover {
+  background-color: #1c5980;
+}
+label[for="prenom"] {
+  color: #3498db;
+}
+
+label[for="nom"] {
+  color: #9b59b6;
+}
+
+label[for="email"] {
+  color: #2ecc71;
+}
+
+label[for="motdepasse"] {
+  color: #e67e22;
+}
+
+label[for="confirmMotdepasse"] {
+  color: #e74c3c;
+}
+
+.container{
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: lightskyblue;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.welcome{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome h2{
+  color:#2c3e50;
+  font-size: 24px;
+}
+
+.photo-profil{
+  width:120px;
+  height:120;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #3498db;
+  margin-bottom: 15px;
+}
+.user-info h3 {
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.user-info p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.user-info strong {
+  color: #2c3e50;
+}
+
+.ajout-produit{
+  background-color: lightyellow;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+.ajout-produit h3{
+  color: darkblue;
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  margin-top: 10px;
+  color: darkgreen;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: orange;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+form {
+  background-color: lightyellow;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+label {
+  color: darkgreen;
+  display: block;
+  margin-top: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: lightblue;
+}
+
+.actions button {
+  margin-right: 5px;
+  background-color: teal;
+}
+
+.actions .delete {
+  background-color: crimson;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="teste.css">
+  <title>Page d'inscription</title>
+  
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul class="navbar">
+      <li><a href="#acceuil">Acceuil</a></li>
+      <li><a href="#ajouter">ajouter produit</a></li>
+      <li><button type="button" id="button">S'inscrire</button></li>
+    </ul>
+  </nav>
+
+  <section id="formulaire-inscription">
+    <form id="formInscription">
+      <label>Prénom* :</label>
+      <input type="text" id="prenom" required />
+      <div class="erreur" id="erreurprenom"></div>
+
+      <label>Nom* :</label>
+      <input type="text" id="nom" required />
+      <div class="erreur" id="erreurnom"></div>
+
+      <label>Email* :</label>
+      <input type="email" id="email" required />
+      <div class="erreur" id="erreurEmail"></div>
+
+      <label>Mot de passe* :</label>
+      <input type="password" id="motdepasse" required />
+      <div class="erreur" id="erreurMdp"></div>
+
+      <label>Confirmer le mot de passe* :</label>
+      <input type="password" id="confirmMotdepasse" required />
+      <div class="erreur" id="erreurConfirmMdp"></div>
+
+      <button type="submit">S'inscrire</button>
+    </form>
+
+    <div class="container">
+
+      <section class="welcome">
+        <h2>Bienvenue, Alé !</h2>
+        <img src="photo green card.jpg" alt="Photo de Profil" class="photo-profil">
+      </section>
+      <section class="user-info">
+        <h3>Informations de l'utilisateur :</h3>
+        <p><strong>Nom :</strong><span id="monnom"></span></p>
+        <p><strong>Prénom :</strong><span id="monprenom"></span></p>
+        <p><strong>Email :</strong><span id="monemail"></span></p>
+      </section>
+    </div>
+
+      <section class="ajout-produit">
+
+        <h3>Ajouter des produits</h3>
+        <form id="formProduit"></form>
+        <label for="nomProduit">Nom du produit* :</label>
+        <input type="text" id="nomProduit" required>
+    
+        <label for="quantite">Quantité en stock* :</label>
+        <input type="number" id="quantite" min="1" required>
+        <label for="libelle">Libellé :</label>
+        <textarea id="libelle"></textarea>
+    
+        <button type="submit">Créer le produit</button>
+      </form>
+
+      </section>
+  </section>
+  <h2>Ajout de Produits</h2>
+  <form id="formProduit">
+    <label for="nomProduit">Nom du produit* :</label>
+    <input type="text" id="nomProduit" required>
+
+    <label for="quantite">Quantité en stock* :</label>
+    <input type="number" id="quantite" min="1" required>
+
+    <label for="libelle">Libellé :</label>
+    <textarea id="libelle"></textarea>
+
+    <button type="submit">Créer le produit</button>
+  </form>
+
+  <h2>Liste des Produits</h2>
+  <table id="tableProduits">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Libellé</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+</body>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  let formulaire = document.getElementById("formInscription");
+  let bouton = document.getElementById("button");
+
+  // Afficher le formulaire si besoin (facultatif)
+  bouton.addEventListener("click", function () {
+    formulaire.style.display = "block";
+  });
+
+  // Gestion de la soumission du formulaire
+  formulaire.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let prenom = document.getElementById("prenom").value.trim();
+    let nom = document.getElementById("nom").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("motdepasse").value;
+    let confirmPassword = document.getElementById("confirmMotdepasse").value;
+
+    // Sélection des zones d'erreur
+    let erreurPrenom = document.getElementById("erreurprenom");
+    let erreurNom = document.getElementById("erreurnom");
+    let erreurEmail = document.getElementById("erreurEmail");
+    let erreurMdp = document.getElementById("erreurMdp");
+    let erreurConfirm = document.getElementById("erreurConfirmMdp");
+
+    // Réinitialisation des messages d'erreur
+    erreurPrenom.textContent = "";
+    erreurNom.textContent = "";
+    erreurEmail.textContent = "";
+    erreurMdp.textContent = "";
+    erreurConfirm.textContent = "";
+
+    let isValid = true;
+
+    // Validation du prénom (au moins 2 lettres sans chiffre)
+    if (prenom.length < 2 || /\d/.test(prenom)) {
+      erreurPrenom.textContent = "Prénom invalide";
+      erreurPrenom.style.color = "red";
+      isValid = false;
+    }
+
+    // Validation du nom (au moins 2 lettres sans chiffre)
+    if (nom.length < 2 || /\d/.test(nom)) {
+      erreurNom.textContent = "Nom invalide";
+      erreurNom.style.color = "red";
+      isValid = false;
+    }
+
+    // Validation email (HTML s’en charge, mais on peut ajouter un test)
+    if (!email.includes("@")) {
+      erreurEmail.textContent = "Email invalide";
+      erreurEmail.style.color = "red";
+      isValid = false;
+    }
+
+    // Validation mot de passe (8 caractères, 1 chiffre, 1 majuscule)
+    let regexMdp = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!regexMdp.test(password)) {
+      erreurMdp.textContent = "Mot de passe faible (8 caractères, majuscule et chiffre)";
+      erreurMdp.style.color = "red";
+      isValid = false;
+    }
+
+    // Vérification mot de passe confirmé
+    if (password !== confirmPassword) {
+      erreurConfirm.textContent = "Les mots de passe ne correspondent pas";
+      erreurConfirm.style.color = "red";
+      isValid = false;
+    }
+
+    // Si tout est valide
+    if (isValid) {
+      alert("Formulaire envoyé avec succès !");
+      // formulaire.submit(); // facultatif si tu veux vraiment envoyer
+    }
+  });
+});
+   
+      
+</script>
+
+</html>
+
+
